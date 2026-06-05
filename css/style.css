@@ -1,0 +1,184 @@
+body{
+    margin:0;
+    padding:0;
+    background:#080811;
+    color:white;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+.header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:20px 50px;
+}
+
+.logo{
+    width:120px;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    margin-left:20px;
+    font-weight:bold;
+}
+
+.banner{
+    width:100%;
+    border-radius:20px;
+}
+
+.planes{
+    padding:60px 20px;
+    text-align:center;
+}
+
+.planes h2{
+    font-size:42px;
+}
+
+.contenedor-planes{
+    display:flex;
+    justify-content:center;
+    gap:30px;
+    flex-wrap:wrap;
+    margin-top:40px;
+}
+
+.plan{
+    width:300px;
+    background:#111827;
+    padding:30px;
+    border-radius:20px;
+    border:1px solid #6d28d9;
+    box-shadow:0 0 20px rgba(109,40,217,.4);
+    position:relative;
+}
+
+.destacado{
+    transform:scale(1.05);
+    border:2px solid #00d4ff;
+}
+
+.badge{
+    position:absolute;
+    top:-12px;
+    left:50%;
+    transform:translateX(-50%);
+    background:#00d4ff;
+    color:black;
+    font-weight:bold;
+    padding:6px 15px;
+    border-radius:20px;
+}
+
+.plan h3{
+    font-size:34px;
+}
+
+.precio{
+    font-size:40px;
+    color:#00d4ff;
+    font-weight:bold;
+}
+
+.descripcion{
+    color:#ccc;
+    margin-bottom:20px;
+}
+
+.plan button{
+    margin-top:20px;
+    background:linear-gradient(90deg,#00d4ff,#7c3aed);
+    color:white;
+    border:none;
+    padding:14px 35px;
+    border-radius:12px;
+    cursor:pointer;
+    font-size:16px;
+    font-weight:bold;
+    transition:0.3s;
+}
+
+.plan button:hover{
+    transform:scale(1.05);
+}
+.beneficios{
+    padding:80px 20px;
+    text-align:center;
+}
+
+.beneficios h2{
+    margin-bottom:40px;
+}
+
+.beneficios-grid{
+    display:flex;
+    justify-content:center;
+    gap:20px;
+    flex-wrap:wrap;
+}
+
+.beneficio{
+    background:#111827;
+    padding:20px;
+    border-radius:15px;
+    min-width:220px;
+    border:1px solid #6d28d9;
+}
+.hero-text{
+    text-align:center;
+    padding:30px;
+}
+
+.hero-text h1{
+    font-size:55px;
+    margin-bottom:10px;
+    color:white;
+}
+
+.hero-text p{
+    font-size:22px;
+    color:#00d4ff;
+}
+.hero-text{
+    text-align:center;
+    padding:30px;
+}
+
+.hero-text h1{
+    font-size:55px;
+    margin-bottom:10px;
+    color:white;
+}
+
+.hero-text p{
+    font-size:22px;
+    color:#00d4ff;
+}
+.funciona{
+    text-align:center;
+    padding:80px 20px;
+}
+
+.funciona h2{
+    font-size:40px;
+    margin-bottom:40px;
+}
+
+.pasos{
+    display:flex;
+    justify-content:center;
+    gap:20px;
+    flex-wrap:wrap;
+}
+
+.paso{
+    background:#111827;
+    border:1px solid #6d28d9;
+    border-radius:15px;
+    padding:25px;
+    min-width:220px;
+    font-weight:bold;
+}
