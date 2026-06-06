@@ -10,10 +10,30 @@ function comprarGamers() {
     document.getElementById("modalCompra").style.display = "block";
 }
 
-function comprarIphone() {
-    planSeleccionado = "iphone";
-    document.getElementById("modalCompra").style.display = "block";
+function actualizarConexiones(servicio) {
+
+    const select = document.getElementById("conexiones");
+
+    if (servicio === "IPHONE") {
+
+        select.innerHTML = `
+            <option value="1">1 conexión</option>
+            <option value="2">2 conexiones</option>
+        `;
+
+    } else {
+
+        select.innerHTML = `
+            <option value="1">1 conexión</option>
+            <option value="2">2 conexiones</option>
+            <option value="3">3 conexiones</option>
+        `;
+
+    }
 }
+}
+
+
 
 function cerrarModal() {
     document.getElementById("modalCompra").style.display = "none";
