@@ -1,7 +1,7 @@
 let planSeleccionado = null;
 
 function comprarSS() {
-
+document.getElementById("formCompra").reset();
 
 planSeleccionado = "ss";
 
@@ -13,7 +13,7 @@ document.getElementById("modalCompra").style.display = "block";
 }
 
 function comprarGamers() {
-
+document.getElementById("formCompra").reset();
 
 planSeleccionado = "gamers";
 
