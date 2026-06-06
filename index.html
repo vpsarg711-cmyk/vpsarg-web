@@ -181,6 +181,118 @@ Contratar
 
 </section>
 
+<div id="modalCompra" class="modal">
+
+  <div class="modal-content">
+
+    <span class="cerrar" onclick="cerrarModal()">&times;</span>
+
+    <h2>Completar datos</h2>
+
+    <form id="formCompra">
+
+      <input
+        type="text"
+        id="nombre"
+        placeholder="Nombre completo"
+        required
+      >
+
+      <input
+        type="text"
+        id="whatsapp"
+        placeholder="WhatsApp"
+        required
+      >
+
+      <input
+        type="text"
+        id="usuario"
+        placeholder="Usuario (6 a 8 caracteres)"
+        required
+      >
+
+      <input
+  type="email"
+  id="email"
+  placeholder="Correo electrónico"
+  required
+>
+
+<select id="conexiones" required>
+
+  <option value="1">
+    1 conexión
+  </option>
+
+  <option value="2">
+    2 conexiones
+  </option>
+
+  <option value="3">
+    3 conexiones
+  </option>
+
+</select>
+
+<p id="precioSeleccionado">
+  Precio según plan seleccionado
+</p>
+
+<button type="submit">
+  Continuar al pago
+</button>
+
+    </form>
+
+  </div>
+
+</div>
+<section class="descargas">
+
+<h2>Descargar Aplicación</h2>
+
+<div class="apps">
+
+<div class="app-card">
+
+<h3>Android</h3>
+
+<p>
+Descargá la aplicación oficial VPS ARG
+</p>
+
+<a
+href="https://play.google.com/store/apps/details?id=app.vpsarg"
+target="_blank"
+class="btn-app"
+>
+Descargar Android
+</a>
+
+</div>
+
+<div class="app-card">
+
+<h3>iPhone</h3>
+
+<p>
+Descargá NPV Tunnel para iOS
+</p>
+
+<a
+href="https://apps.apple.com/us/app/npv-tunnel/id1629465476"
+target="_blank"
+class="btn-app"
+>
+Descargar iPhone
+</a>
+
+</div>
+
+</div>
+
+</section>
 <script src="js/app.js"></script>
 
 </body>
