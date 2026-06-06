@@ -14,7 +14,7 @@ document.getElementById("modalCompra").style.display = "block";
 
 function comprarGamers() {
 
-    
+
 planSeleccionado = "gamers";
 
 actualizarConexiones("GAMERS");
@@ -63,30 +63,35 @@ if (servicio === "IPHONE") {
 
 function cerrarModal() {
 
-
-document.getElementById("modalCompra").style.display = "none";
-
+    document.getElementById("modalCompra").style.display = "none";
 
 }
+
+document.getElementById("usuario").addEventListener("input", function() {
+
+    this.value = this.value
+        .toLowerCase()
+        .replace(/\s/g, "")
+        .replace(/[^a-z0-9]/g, "");
+
+});
 
 function generarPassword() {
 
+    const caracteres =
+        "abcdefghijklmnopqrstuvwxyz0123456789";
 
-const caracteres =
-    "abcdefghijklmnopqrstuvwxyz0123456789";
+    let password = "";
 
-let password = "";
+    for (let i = 0; i < 8; i++) {
 
-for (let i = 0; i < 8; i++) {
+        password += caracteres.charAt(
+            Math.floor(Math.random() * caracteres.length)
+        );
 
-    password += caracteres.charAt(
-        Math.floor(Math.random() * caracteres.length)
-    );
+    }
 
-}
-
-return password;
-
+    return password;
 
 }
 
@@ -235,3 +240,4 @@ try {
 
 
 });
+
