@@ -304,4 +304,76 @@ nav a{
     border-radius:12px;
 
     font-weight:bold;
+    cursor:pointer;
+transition:0.3s;
+}
+
+.btn-app:hover{
+
+    transform:translateY(-2px);
+
+    box-shadow:0 0 20px rgba(124,58,237,.6);
+
+}
+.renovar{
+
+    text-align:center;
+
+    padding:80px 20px;
+}
+
+.renovar h2{
+
+    font-size:40px;
+
+    margin-bottom:20px;
+}
+
+.renovar p{
+
+    color:#ccc;
+
+    margin-bottom:25px;
+}
+#infoUsuario{
+
+    margin:15px 0;
+}
+
+.usuario-encontrado{
+
+    background:#111827;
+
+    border:1px solid #374151;
+
+    border-radius:12px;
+
+    padding:15px;
+
+    text-align:left;
+}
+
+.usuario-encontrado h3{
+
+    color:#22c55e;
+
+    margin-bottom:10px;
+}
+.usuario-encontrado p{
+
+    margin:10px 0;
+
+    font-size:18px;
+}
+
+.usuario-encontrado{
+
+    box-shadow:
+    0 0 20px
+    rgba(
+        34,
+        197,
+        94,
+        .15
+    );
 }

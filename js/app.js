@@ -1,3 +1,4 @@
+let usuarioVerificado = false;
 let planSeleccionado = null;
 
 function comprarSS() {
@@ -171,7 +172,6 @@ document
 .addEventListener("change", actualizarPrecio);
 
 document
-document
 .getElementById("formCompra")
 .addEventListener("submit", async function(e) {
 
@@ -277,3 +277,280 @@ document
 
 });
 
+function abrirRenovacion() {
+
+    document.getElementById(
+        "modalRenovacion"
+    ).style.display = "block";
+
+}
+
+function cerrarRenovacion() {
+
+    document.getElementById(
+        "modalRenovacion"
+    ).style.display = "none";
+
+    document.getElementById(
+        "btnBuscarUsuario"
+    ).style.display = "block";
+
+    document.getElementById(
+        "btnBuscarUsuario"
+    ).innerHTML =
+        "Verificar Usuario";
+
+    document.getElementById(
+        "btnBuscarUsuario"
+    ).disabled = false;
+
+    document.getElementById(
+        "infoUsuario"
+    ).innerHTML = "";
+
+    usuarioVerificado = false;
+
+}
+
+document
+.getElementById("formRenovacion")
+.addEventListener(
+    "submit",
+    async function(e) {
+
+        e.preventDefault();
+if (!usuarioVerificado) {
+
+    alert(
+        "Primero verificá el usuario."
+    );
+
+    return;
+
+}
+        const usuario =
+            document.getElementById(
+                "usuarioRenovar"
+            ).value.trim();
+
+        const email =
+            document.getElementById(
+                "emailRenovar"
+            ).value.trim();
+
+        try {
+
+            const respuesta =
+                await fetch(
+                    "https://api.vpsarg.com.ar/crear-preferencia-renovacion",
+                    {
+                        method: "POST",
+                        headers: {
+                            "Content-Type":
+                                "application/json"
+                        },
+                        body: JSON.stringify({
+                            usuario_servex: usuario,
+                            email: email
+                        })
+                    }
+                );
+
+            const data =
+                await respuesta.json();
+
+            if (!data.ok) {
+
+                alert(
+                    "No se pudo crear la renovación."
+                );
+
+                return;
+
+            }
+
+            window.location.href =
+                data.init_point;
+
+        } catch (error) {
+
+            console.error(error);
+
+            alert(
+                "Error al crear la renovación."
+            );
+
+        }
+
+    }
+);
+document
+.getElementById("btnBuscarUsuario")
+.addEventListener(
+    "click",
+    async function() {
+
+        const usuario =
+            document.getElementById(
+                "usuarioRenovar"
+            ).value.trim();
+
+        if (!usuario) {
+
+            alert(
+                "Ingresá un usuario."
+            );
+
+            return;
+
+        }
+
+        const info =
+            document.getElementById(
+                "infoUsuario"
+            );
+
+        info.innerHTML =
+            "Buscando usuario...";
+
+        try {
+
+            const respuesta =
+                await fetch(
+                    "https://api.vpsarg.com.ar/buscar-usuario",
+                    {
+                        method: "POST",
+                        headers: {
+                            "Content-Type":
+                                "application/json"
+                        },
+                        body: JSON.stringify({
+                            usuario
+                        })
+                    }
+                );
+
+            const data =
+                await respuesta.json();
+
+            if (!data.ok) {
+
+    usuarioVerificado = false;
+
+    document.getElementById(
+        "btnBuscarUsuario"
+    ).innerHTML =
+        "✗ Usuario no encontrado";
+
+    document.getElementById(
+        "btnBuscarUsuario"
+    ).style.background =
+        "#dc2626";
+
+    document.getElementById(
+        "btnBuscarUsuario"
+    ).style.color =
+        "#fff";
+
+    info.innerHTML = `
+        <div class="usuario-error">
+            <p>
+            Puede que después de 72 hs
+            de vencido su usuario haya sido
+            eliminado del sistema.
+
+            Genere o compre un nuevo usuario.
+            </p>
+        </div>
+    `;
+
+    return;
+}
+    usuarioVerificado = true;
+
+document.getElementById(
+    "btnBuscarUsuario"
+).innerHTML =
+    "✓ Usuario Verificado";
+
+document.getElementById(
+    "btnBuscarUsuario"
+).disabled = true;
+document.getElementById(
+    "btnBuscarUsuario"
+).style.background =
+    "#22c55e";
+
+document.getElementById(
+    "btnBuscarUsuario"
+).style.color =
+    "#fff";
+
+  info.innerHTML = `
+    <div class="usuario-encontrado">
+
+    <h3>
+    ✅ Usuario encontrado
+    </h3>
+
+    <p>
+    Plan:
+    ${
+    data.observacion === "IPHONE"
+    ? "IPHONE PREMIUM"
+
+    : data.categoria.includes("Gamers")
+    ? "GAMERS PREMIUM"
+
+    : "SS PREMIUM"
+    }
+    </p>
+
+    <p>
+    Renovación:
+    ${
+    data.observacion === "IPHONE"
+    ? "$12.000"
+
+    : data.categoria.includes("Gamers")
+    ? "$10.000"
+
+    : "$8.000"
+    }
+    </p>
+
+    <p>
+    Conexiones:
+    ${data.conexiones}
+    </p>
+
+    <p>
+    Vence:
+    ${new Date(data.vence).toLocaleDateString()}
+    </p>
+
+    <p>
+    Restan:
+    ${Math.ceil(
+    (
+    new Date(data.vence) -
+    new Date()
+    ) / 86400000
+    )}
+    días
+    </p>
+
+    </div>
+`;
+
+        } catch (error) {
+
+            console.error(error);
+
+            info.innerHTML =
+                "<p>Error de conexión</p>";
+
+        }
+
+    }
+);

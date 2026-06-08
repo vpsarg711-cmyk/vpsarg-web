@@ -39,7 +39,7 @@ Conectados con vos, siempre.
 
 <section class="hero">
 
-<img src="IMG/banner.jpg" class="banner">
+<img src="IMG/banner.png" class="banner" alt="Neon promotional banner for VPS ARG presenting VPN PREMIUM ARGENTINA. Large headline reads VPN PREMIUM ARGENTINA with smaller site branding VPS ARG and tagline Conectados con vos, siempre!. Three feature boxes read SS PREMIUM Navegación segura y estable; GAMERS PREMIUM Ping bajo y máxima performance; IPHONE PREMIUM Optimizado para dispositivos iOS. Above the feature boxes are three benefits: MÁS VELOCIDAD | MÁS SEGURIDAD | MÁS ESTABILIDAD. A bottom information row lists RENOVACIÓN AUTOMÁTICA Sin cortes de conexión; SOPORTE PERSONALIZADO Estamos para ayudarte; CONEXIÓN SEGURA Protegemos tu privacidad; ACTIVACIÓN INMEDIATA Tu VPN en segundos. Visual style is dark with bright blue and magenta neon borders, glowing particle streaks and rounded rectangles; overall tone is energetic, modern and high tech, conveying speed, security and reliability.">
 
 </section>
 
@@ -295,6 +295,61 @@ Descargar iPhone
 </div>
 
 </section>
+<section class="renovar">
+
+<h2>Renovar Servicio</h2>
+
+<p>
+Ingresá tu usuario y renová automáticamente tu servicio.
+</p>
+
+<button class="btn-app" onclick="abrirRenovacion()">
+Renovar Ahora
+</button>
+
+</section>
+
+<div id="modalRenovacion" class="modal">
+
+<div class="modal-content">
+
+<span class="cerrar" onclick="cerrarRenovacion()">
+&times;
+</span>
+
+<h2>Renovar Servicio</h2>
+
+<form id="formRenovacion">
+
+<input
+type="text"
+id="usuarioRenovar"
+placeholder="Usuario Servex"
+required
+>
+
+<button id="btnBuscarUsuario">
+Verificar Usuario
+</button>
+
+<div id="infoUsuario"></div>
+
+<input
+type="email"
+id="emailRenovar"
+placeholder="Correo electrónico"
+required
+>
+
+<button type="submit">
+Continuar al pago
+</button>
+
+</form>
+
+</div>
+
+</div>
 <script src="js/app.js"></script>
 
 </body>
