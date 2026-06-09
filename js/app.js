@@ -309,7 +309,24 @@ function cerrarRenovacion() {
     ).innerHTML = "";
 
     usuarioVerificado = false;
+document.getElementById(
+    "usuarioRenovar"
+).value = "";
 
+document.getElementById(
+    "emailRenovacion"
+).value = "";
+document.getElementById(
+    "btnBuscarUsuario"
+).innerHTML = "Verificar Usuario";
+
+document.getElementById(
+    "btnBuscarUsuario"
+).disabled = false;
+
+document.getElementById(
+    "btnBuscarUsuario"
+).style.background = "";
 }
 
 document
