@@ -314,7 +314,7 @@ document.getElementById(
 ).value = "";
 
 document.getElementById(
-    "emailRenovacion"
+    "emailRenovar"
 ).value = "";
 document.getElementById(
     "btnBuscarUsuario"
@@ -452,113 +452,106 @@ document
 
             if (!data.ok) {
 
-    usuarioVerificado = false;
+                usuarioVerificado = false;
 
-    document.getElementById(
-        "btnBuscarUsuario"
-    ).innerHTML =
-        "✗ Usuario no encontrado";
+                document.getElementById(
+                    "btnBuscarUsuario"
+                ).innerHTML =
+                    "✗ Usuario no encontrado";
 
-    document.getElementById(
-        "btnBuscarUsuario"
-    ).style.background =
-        "#dc2626";
+                document.getElementById(
+                    "btnBuscarUsuario"
+                ).style.background =
+                    "#dc2626";
 
-    document.getElementById(
-        "btnBuscarUsuario"
-    ).style.color =
-        "#fff";
+                document.getElementById(
+                    "btnBuscarUsuario"
+                ).style.color =
+                    "#fff";
 
-    info.innerHTML = `
-        <div class="usuario-error">
-            <p>
-            Puede que después de 72 hs
-            de vencido su usuario haya sido
-            eliminado del sistema.
+                info.innerHTML = `
+                    <div class="usuario-error">
+                        <p>
+                        Puede que después de 72 hs
+                        de vencido su usuario haya sido
+                        eliminado del sistema.
 
-            Genere o compre un nuevo usuario.
-            </p>
-        </div>
-    `;
+                        Genere o compre un nuevo usuario.
+                        </p>
+                    </div>
+                `;
 
-    return;
-}
-    usuarioVerificado = true;
+                return;
 
-document.getElementById(
-    "btnBuscarUsuario"
-).innerHTML =
-    "✓ Usuario Verificado";
+            }
 
-document.getElementById(
-    "btnBuscarUsuario"
-).disabled = true;
-document.getElementById(
-    "btnBuscarUsuario"
-).style.background =
-    "#22c55e";
+            usuarioVerificado = true;
 
-document.getElementById(
-    "btnBuscarUsuario"
-).style.color =
-    "#fff";
+            document.getElementById(
+                "btnBuscarUsuario"
+            ).innerHTML =
+                "✓ Usuario Verificado";
 
-  info.innerHTML = `
-    <div class="usuario-encontrado">
+            document.getElementById(
+                "btnBuscarUsuario"
+            ).disabled = true;
 
-    <h3>
-    ✅ Usuario encontrado
-    </h3>
+            document.getElementById(
+                "btnBuscarUsuario"
+            ).style.background =
+                "#22c55e";
 
-    <p>
-    Plan:
-    ${
-    data.observacion === "IPHONE"
-    ? "IPHONE PREMIUM"
+            document.getElementById(
+                "btnBuscarUsuario"
+            ).style.color =
+                "#fff";
 
-    : data.categoria.includes("Gamers")
-    ? "GAMERS PREMIUM"
+            info.innerHTML = `
+                <div class="usuario-encontrado">
 
-    : "SS PREMIUM"
-    }
-    </p>
+                <h3>
+                ✅ Usuario encontrado
+                </h3>
 
-    <p>
-    Renovación:
-    ${
-    data.observacion === "IPHONE"
-    ? "$12.000"
+                <p>
+                Plan:
+                ${
+                data.observacion === "IPHONE"
+                ? "IPHONE PREMIUM"
+                : data.categoria.includes("Gamers")
+                ? "GAMERS PREMIUM"
+                : "SS PREMIUM"
+                }
+                </p>
 
-    : data.categoria.includes("Gamers")
-    ? "$10.000"
+                <p>
+                Renovación:
+                $${data.precio.toLocaleString("es-AR")}
+                </p>
 
-    : "$8.000"
-    }
-    </p>
+                <p>
+                Conexiones:
+                ${data.conexiones}
+                </p>
 
-    <p>
-    Conexiones:
-    ${data.conexiones}
-    </p>
+                <p>
+                Vence:
+                ${new Date(data.vence).toLocaleDateString()}
+                </p>
 
-    <p>
-    Vence:
-    ${new Date(data.vence).toLocaleDateString()}
-    </p>
+                <p>
+                Restan:
+                ${Math.ceil(
+                (
+                new Date(data.vence) -
+                new Date()
+                ) / 86400000
+                )}
+                días
+                </p>
 
-    <p>
-    Restan:
-    ${Math.ceil(
-    (
-    new Date(data.vence) -
-    new Date()
-    ) / 86400000
-    )}
-    días
-    </p>
-
-    </div>
-`;
+                </div>
+            `;
 
         } catch (error) {
 
@@ -570,4 +563,33 @@ document.getElementById(
         }
 
     }
-);
+);      
+        
+
+document.getElementById(
+    "usuarioRenovar"
+).addEventListener("input", () => {
+
+    usuarioVerificado = false;
+
+    document.getElementById(
+        "infoUsuario"
+    ).innerHTML = "";
+
+    document.getElementById(
+        "btnBuscarUsuario"
+    ).innerHTML = "Verificar Usuario";
+
+    document.getElementById(
+        "btnBuscarUsuario"
+    ).disabled = false;
+
+    document.getElementById(
+        "btnBuscarUsuario"
+    ).style.background = "";
+
+    document.getElementById(
+        "btnBuscarUsuario"
+    ).style.color = "";
+
+});
