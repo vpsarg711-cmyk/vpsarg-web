@@ -3,63 +3,124 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pago Aprobado - VPS ARG</title>
+
+<title>Pago aprobado - VPS ARG</title>
 
 <style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
 body{
-  background:#0f172a;
-  color:white;
-  font-family:Arial,sans-serif;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  min-height:100vh;
-  margin:0;
-  padding:20px;
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:20px;
+
+    font-family:Arial,sans-serif;
+
+    background:
+    radial-gradient(circle at top,#1e3a8a,#0f172a 60%);
 }
 
 .card{
-  background:#1e293b;
-  padding:40px;
-  border-radius:15px;
-  text-align:center;
-  max-width:650px;
-  width:100%;
+    width:100%;
+    max-width:650px;
+
+    background:rgba(30,41,59,.96);
+
+    border:1px solid rgba(59,130,246,.35);
+
+    border-radius:22px;
+
+    padding:45px 35px;
+
+    text-align:center;
+
+    box-shadow:
+    0 0 40px rgba(59,130,246,.25);
 }
 
 h1{
-  color:#22c55e;
-  margin-bottom:20px;
+    color:#22c55e;
+    font-size:42px;
+    margin-bottom:25px;
 }
 
 p{
-  line-height:1.7;
+    color:#e2e8f0;
+    font-size:20px;
+    line-height:1.8;
+    margin:18px 0;
 }
 
 .boton{
-  display:inline-block;
-  margin:10px;
-  padding:12px 20px;
-  background:#2563eb;
-  color:white;
-  text-decoration:none;
-  border-radius:8px;
-  font-weight:bold;
+    display:block;
+
+    width:100%;
+    max-width:380px;
+
+    margin:15px auto;
+
+    padding:16px;
+
+    border-radius:12px;
+
+    text-decoration:none;
+
+    font-weight:bold;
+
+    font-size:18px;
+
+    transition:.25s;
+
+    background:#06b6d4;
+    color:white;
 }
 
-.alerta{
-  margin-top:20px;
-  color:#facc15;
-  font-weight:bold;
+.boton:hover{
+    transform:translateY(-2px);
+    box-shadow:0 0 20px rgba(6,182,212,.5);
 }
+
+.boton.secundario{
+    background:#334155;
+}
+
+.boton.secundario:hover{
+    box-shadow:0 0 20px rgba(148,163,184,.4);
+}
+
+@media(max-width:768px){
+
+    .card{
+        padding:35px 25px;
+    }
+
+    h1{
+        font-size:34px;
+    }
+
+    p{
+        font-size:18px;
+    }
+
+    .boton{
+        font-size:17px;
+    }
+}
+
 </style>
+
 </head>
 
 <body>
 
 <div class="card">
-
-<h1>✅ Pago aprobado</h1>
 
 <div id="contenido"></div>
 
@@ -78,39 +139,22 @@ const botones = document.getElementById("botones");
 if(servicio === "iphone"){
 
 contenido.innerHTML = `
+<h1>🎉 ¡Felicitaciones!</h1>
+
 <p>
-Tu servicio ya fue activado y está listo para utilizarse.
+Tu configuración ya fue activada.
 </p>
 
 <p>
-📧 Revisá tu correo electrónico.
-</p>
-
-<p>
-Recibirás:<br>
-✓ Usuario<br>
-✓ Contraseña<br>
-✓ Datos de acceso
+📧 Revisá tu correo electrónico y seguí las instrucciones.
 </p>
 
 <p>
 📱 Descargá NPV Tunnel.
 </p>
 
-<div class="alerta">
-⚠️ Para continuar es necesario instalar NPV Tunnel antes de contactarte por WhatsApp.
-</div>
-
 <p>
-📶 Recordá:
-<br><br>
-✅ Datos móviles activados
-<br>
-❌ Wi-Fi desactivado
-</p>
-
-<p>
-⏱ La activación suele completarse en pocos minutos.
+Luego enviame tus credenciales por WhatsApp para generar tu archivo de configuración.
 </p>
 `;
 
@@ -143,42 +187,30 @@ target="_blank">
 <a class="boton"
 href="https://wa.me/5493435350260?text=${encodeURIComponent(mensaje)}"
 target="_blank">
-💬 CONTINUAR POR WHATSAPP
+💬 ENVIAR CREDENCIALES POR WHATSAPP
+</a>
+
+<a class="boton secundario" href="/">
+🏠 VOLVER AL INICIO
 </a>
 `;
+
 }
 else{
 
 contenido.innerHTML = `
+<h1>🎉 ¡Felicitaciones!</h1>
+
 <p>
-Tu servicio ya fue activado y está listo para utilizarse.
+Tu configuración ya fue activada.
 </p>
 
 <p>
-📧 Revisá tu correo electrónico.
-</p>
-
-<p>
-Recibirás:<br>
-✓ Usuario<br>
-✓ Contraseña<br>
-✓ Datos de acceso
+📧 Revisá tu correo electrónico y seguí las instrucciones.
 </p>
 
 <p>
 📱 Descargá la aplicación VPS ARG para conectarte.
-</p>
-
-<p>
-📶 Recordá:
-<br><br>
-✅ Datos móviles activados
-<br>
-❌ Wi-Fi desactivado
-</p>
-
-<p>
-⏱ La activación suele completarse en pocos minutos.
 </p>
 `;
 
@@ -188,15 +220,12 @@ href="https://play.google.com/store/apps/details?id=app.vpsarg"
 target="_blank">
 📱 DESCARGAR APP VPS ARG
 </a>
-`;
-}
 
-botones.innerHTML += `
-<br>
-<a class="boton" href="/">
+<a class="boton secundario" href="/">
 🏠 VOLVER AL INICIO
 </a>
 `;
+}
 
 </script>
 
