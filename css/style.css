@@ -406,10 +406,10 @@ gap:15px;
 }
 
 .header nav{
-display:flex;
-flex-wrap:wrap;
+display:none;
+flex-direction:column;
 justify-content:center;
-gap:10px;
+gap:15px;
 }
 
 .hero-text h1{
@@ -479,7 +479,24 @@ margin-top:15px;
         margin-top:15px;
     }
 
-    nav.activo{
-        display:flex;
+    #menu.activo{
+    display:flex;
+}
+}
+@media(max-width:768px){
+
+    nav{
+        display:none !important;
     }
+
+    #menu.activo{
+        display:flex !important;
+    }
+
+    .menu-toggle{
+        display:block !important;
+        font-size:40px;
+        color:white;
+    }
+
 }

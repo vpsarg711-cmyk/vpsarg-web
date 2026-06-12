@@ -17,10 +17,14 @@
 
 <img src="IMG/logo.png" class="logo">
 
-<nav>
-<a href="#planes">Planes</a>
-<a href="#beneficios">Beneficios</a>
-<a href="#contacto">Contacto</a>
+<button class="menu-toggle" onclick="toggleMenu()">
+☰
+</button>
+
+<nav id="menu">
+  <a href="#planes">Planes</a>
+  <a href="#beneficios">Beneficios</a>
+  <a href="#contacto">Contacto</a>
 </nav>
 
 </header>
@@ -377,6 +381,18 @@ target="_blank">
 💬
 
 </a>
+<script>
+function toggleMenu() {
+  const menu = document.getElementById("menu");
+
+  if (menu.classList.contains("activo")) {
+    menu.classList.remove("activo");
+  } else {
+    menu.classList.add("activo");
+  }
+}
+</script>
+
 </body>
 
 </html>
