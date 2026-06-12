@@ -3,40 +3,54 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pago Exitoso - VPS ARG</title>
+<title>Pago Aprobado - VPS ARG</title>
 
 <style>
 body{
-background:#0f172a;
-color:white;
-font-family:Arial,sans-serif;
-display:flex;
-justify-content:center;
-align-items:center;
-height:100vh;
-margin:0;
+  background:#0f172a;
+  color:white;
+  font-family:Arial,sans-serif;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  min-height:100vh;
+  margin:0;
+  padding:20px;
 }
 
 .card{
-background:#1e293b;
-padding:40px;
-border-radius:15px;
-text-align:center;
-max-width:500px;
+  background:#1e293b;
+  padding:40px;
+  border-radius:15px;
+  text-align:center;
+  max-width:650px;
+  width:100%;
 }
 
 h1{
-color:#22c55e;
+  color:#22c55e;
+  margin-bottom:20px;
 }
 
-a{
-display:inline-block;
-margin-top:20px;
-padding:12px 20px;
-background:#2563eb;
-color:white;
-text-decoration:none;
-border-radius:8px;
+p{
+  line-height:1.7;
+}
+
+.boton{
+  display:inline-block;
+  margin:10px;
+  padding:12px 20px;
+  background:#2563eb;
+  color:white;
+  text-decoration:none;
+  border-radius:8px;
+  font-weight:bold;
+}
+
+.alerta{
+  margin-top:20px;
+  color:#facc15;
+  font-weight:bold;
 }
 </style>
 </head>
@@ -44,18 +58,147 @@ border-radius:8px;
 <body>
 
 <div class="card">
+
 <h1>✅ Pago aprobado</h1>
 
-<p>
-Tu pago fue recibido correctamente.
-</p>
+<div id="contenido"></div>
 
-<p>
-En unos minutos recibirás los datos de acceso por correo electrónico.
-</p>
+<div id="botones"></div>
 
-<a href="/">Volver al inicio</a>
 </div>
+
+<script>
+
+const params = new URLSearchParams(window.location.search);
+const servicio = (params.get("servicio") || "").toLowerCase();
+
+const contenido = document.getElementById("contenido");
+const botones = document.getElementById("botones");
+
+if(servicio === "iphone"){
+
+contenido.innerHTML = `
+<p>
+Tu servicio ya fue activado y está listo para utilizarse.
+</p>
+
+<p>
+📧 Revisá tu correo electrónico.
+</p>
+
+<p>
+Recibirás:<br>
+✓ Usuario<br>
+✓ Contraseña<br>
+✓ Datos de acceso
+</p>
+
+<p>
+📱 Descargá NPV Tunnel.
+</p>
+
+<div class="alerta">
+⚠️ Para continuar es necesario instalar NPV Tunnel antes de contactarte por WhatsApp.
+</div>
+
+<p>
+📶 Recordá:
+<br><br>
+✅ Datos móviles activados
+<br>
+❌ Wi-Fi desactivado
+</p>
+
+<p>
+⏱ La activación suele completarse en pocos minutos.
+</p>
+`;
+
+const mensaje =
+`Hola.
+
+Ya realicé mi compra de IPHONE PREMIUM.
+
+Ya revisé mi correo electrónico.
+
+Mis credenciales son:
+
+Usuario:
+___________
+
+Contraseña:
+___________
+
+Ya instalé NPV Tunnel.
+
+Quedo a la espera del archivo de configuración.`;
+
+botones.innerHTML = `
+<a class="boton"
+href="https://apps.apple.com/"
+target="_blank">
+📱 DESCARGAR NPV TUNNEL
+</a>
+
+<a class="boton"
+href="https://wa.me/5493435350260?text=${encodeURIComponent(mensaje)}"
+target="_blank">
+💬 CONTINUAR POR WHATSAPP
+</a>
+`;
+}
+else{
+
+contenido.innerHTML = `
+<p>
+Tu servicio ya fue activado y está listo para utilizarse.
+</p>
+
+<p>
+📧 Revisá tu correo electrónico.
+</p>
+
+<p>
+Recibirás:<br>
+✓ Usuario<br>
+✓ Contraseña<br>
+✓ Datos de acceso
+</p>
+
+<p>
+📱 Descargá la aplicación VPS ARG para conectarte.
+</p>
+
+<p>
+📶 Recordá:
+<br><br>
+✅ Datos móviles activados
+<br>
+❌ Wi-Fi desactivado
+</p>
+
+<p>
+⏱ La activación suele completarse en pocos minutos.
+</p>
+`;
+
+botones.innerHTML = `
+<a class="boton"
+href="https://play.google.com/store/apps/details?id=app.vpsarg"
+target="_blank">
+📱 DESCARGAR APP VPS ARG
+</a>
+`;
+}
+
+botones.innerHTML += `
+<br>
+<a class="boton" href="/">
+🏠 VOLVER AL INICIO
+</a>
+`;
+
+</script>
 
 </body>
 </html>
