@@ -456,3 +456,30 @@ border-radius:10px;
 text-decoration:none;
 margin-top:15px;
 }
+.menu-toggle{
+    display:none;
+    background:none;
+    border:none;
+    color:white;
+    font-size:32px;
+    cursor:pointer;
+}
+
+@media(max-width:768px){
+
+    .menu-toggle{
+        display:block;
+        margin:auto;
+    }
+
+    nav{
+        display:none;
+        flex-direction:column;
+        gap:15px;
+        margin-top:15px;
+    }
+
+    nav.activo{
+        display:flex;
+    }
+}
