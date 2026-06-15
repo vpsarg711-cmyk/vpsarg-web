@@ -22,6 +22,7 @@ body{
 
 .logo{
     width:120px;
+    margin-top:20px;
 }
 
 nav a{
@@ -314,6 +315,7 @@ nav a:hover{
 }
 
 .descargas{
+    margin-top:20px;
 
     padding:80px 20px;
 
@@ -333,10 +335,13 @@ nav a:hover{
 
 .app-card{
 
-    background:#111827;
-
-    border:1px solid #6d28d9;
-
+    background:none;
+display:flex;
+    flex-direction:column;
+    border:none;
+    align-items:center;
+    justify-content:center;
+    box-shadow:transparent;
     border-radius:20px;
 
     padding:30px;
@@ -369,7 +374,7 @@ transition:0.3s;
 
     transform:translateY(-2px);
 
-    box-shadow:0 0 20px rgba(124,58,237,.6);
+    box-shadow:0 0 20px rgba(139,92,246,.6);
 
 }
 .renovar{
@@ -506,7 +511,7 @@ padding:40px 20px;
 .btn-app{
 display:inline-block;
 padding:15px 30px;
-background:#00d4ff;
+background:linear-gradient(135deg, #8b5cf6, #6d28d9);
 color:white;
 font-weight:bold;
 border-radius:10px;
@@ -587,7 +592,7 @@ margin-top:15px;
 
     transform:scale(1.05);
 
-    border:2px solid #00d4ff;
+    border:2px solid #8b5cf6;
 
     box-shadow:
     0 0 20px rgba(0,212,255,.4),
@@ -610,6 +615,50 @@ margin-top:15px;
     100%{
         box-shadow:
         0 0 15px rgba(0,212,255,.3);
+    }
+
+}
+.app-logo{
+    width: 320px;
+    height:180px;
+    object-fit:contain;
+    border-radius:30px;
+    display:block;
+    margin:0 auto 20px auto;
+    transition:0.3s;
+}
+.app-logo:hover{
+    transform:scale(1.05);
+}
+.gamers{
+    color:#fff;
+
+    animation: neonPulse 4s infinite;
+}
+
+@keyframes neonPulse{
+
+    0%{
+        color:#ffffff;
+        text-shadow:
+        0 0 10px #00e5ff,
+        0 0 20px #00e5ff,
+        0 0 40px #00e5ff;
+    }
+
+    50%{
+        text-shadow:#00e5ff;
+        text-shadow:
+        0 0 3px #8be9ff,
+        0 0 6px #8be9ff,
+        0 0 12px #8be9ff;
+    }
+
+    100%{
+        text-shadow:
+        0 0 5px #00e5ff,
+        0 0 10px #00e5ff,
+        0 0 20px #00e5ff;
     }
 
 }
