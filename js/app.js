@@ -517,13 +517,16 @@ document
                 "btnBuscarUsuario"
             ).style.color =
                 "#fff";
+            const diasRestantes = Math.ceil(
+                (new Date(data.vence) - new Date()) / 86400000
+            );
 
             info.innerHTML = `
                 <div class="usuario-encontrado">
 
-                <h3>
-                ✅ Usuario encontrado
-                </h3>
+                <h3 style="color:${diasRestantes < 0 ? '#ff4d4d' : '#22c55e'}">
+${diasRestantes < 0 ? '❌ Usuario vencido' : '✅ Usuario verificado'}
+</h3>
 
                 <p>
                 Plan:
@@ -552,15 +555,10 @@ document
                 </p>
 
                 <p>
-                Restan:
-                ${Math.ceil(
-                (
-                new Date(data.vence) -
-                new Date()
-                ) / 86400000
-                )}
-                días
-                </p>
+Restan:
+${diasRestantes < 0 ? 'Vencido' : diasRestantes + ' días'}
+</p>
+
 
                 </div>
             `;
