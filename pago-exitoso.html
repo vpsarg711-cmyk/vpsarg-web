@@ -94,6 +94,14 @@ p{
 .boton.secundario:hover{
     box-shadow:0 0 20px rgba(148,163,184,.4);
 }
+.whatsapp{
+    background:#25D366;
+}
+
+.whatsapp:hover{
+    background:#1ebe5d;
+    box-shadow:0 0 20px rgba(37,211,102,.5);
+}
 
 @media(max-width:768px){
 
@@ -179,12 +187,12 @@ Quedo a la espera del archivo de configuración.`;
 
 botones.innerHTML = `
 <a class="boton"
-href="https://apps.apple.com/"
+href="https://apps.apple.com/us/app/npv-tunnel/id1629465476/"
 target="_blank">
 📱 DESCARGAR NPV TUNNEL
 </a>
 
-<a class="boton"
+<a class="boton whatsapp"
 href="https://wa.me/5493435350260?text=${encodeURIComponent(mensaje)}"
 target="_blank">
 💬 ENVIAR CREDENCIALES POR WHATSAPP
