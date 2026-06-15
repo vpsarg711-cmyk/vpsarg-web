@@ -677,3 +677,39 @@ margin-top:15px;
     }
 
 }
+.renovar-card{
+    width:350px;
+    margin:50px auto;
+
+    padding:30px;
+
+    border-radius:25px;
+
+    background:rgba(255,255,255,.03);
+
+    border:1px solid rgba(139,92,246,.4);
+
+    text-align:center;
+
+    text-decoration:none;
+    color:white;
+
+    display:block;
+
+    transition:.3s;
+}
+
+.renovar-card:hover{
+    transform:translateY(-5px);
+
+    box-shadow:
+    0 0 20px rgba(139,92,246,.5),
+    0 0 40px rgba(139,92,246,.2);
+}
+.renovar-logo{
+    width:150px;
+    display:block;
+    margin:0 auto 20px;
+
+    filter:drop-shadow(0 0 25px #8b5cf6);
+}

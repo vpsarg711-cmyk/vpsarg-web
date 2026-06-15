@@ -157,7 +157,21 @@ Contratar
 </div>
 
 </section>
+<section class="renovar-section">
 
+    <a href="#" onclick="abrirModalRenovacion()" class="renovar-card">
+
+        <img src="IMG/renovar.png" class="renovar-logo">
+
+        <h2>Renovar Servicio</h2>
+
+        <p>
+            Ingresá tu usuario y renová tu servicio en segundos.
+        </p>
+
+    </a>
+
+</section>
 <section id="beneficios" class="beneficios">
 
 <h2>¿Por qué elegir VPS ARG?</h2>
@@ -311,18 +325,6 @@ Contratar
 </div>
 
 </section>
-<section class="renovar">
-
-<h2>Renovar Servicio</h2>
-
-<p>
-Ingresá tu usuario y renová automáticamente tu servicio.
-</p>
-
-<button class="btn-app" onclick="abrirRenovacion()">
-Renovar Ahora
-</button>
-
 </section>
 
 <div id="modalRenovacion" class="modal">
@@ -340,8 +342,11 @@ Renovar Ahora
 <input
 type="text"
 id="usuarioRenovar"
+minlength="6"
+maxlength="8"
 placeholder="Usuario Servex"
 required
+oninput="this.value = this.value.toLowerCase()"
 >
 
 <button id="btnBuscarUsuario">

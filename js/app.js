@@ -193,6 +193,7 @@ document
         parseInt(
             document.getElementById("conexiones").value
         );
+        
 
     if (nombre.length < 3) {
         alert("Ingrese su nombre completo");
@@ -349,6 +350,17 @@ if (!usuarioVerificado) {
             document.getElementById(
                 "usuarioRenovar"
             ).value.trim();
+        const usuarioInput = document.getElementById("usuario");
+
+if (usuarioInput) {
+    usuarioInput.addEventListener("input", function() {
+        if (this.value.length > 0) {
+            this.value =
+                this.value.charAt(0).toLowerCase() +
+                this.value.slice(1);
+        }
+    });
+}
 
         const email =
             document.getElementById(
@@ -593,3 +605,6 @@ document.getElementById(
     ).style.color = "";
 
 });
+function abrirModalRenovacion() {
+    document.getElementById("modalRenovacion").style.display = "flex";
+}
