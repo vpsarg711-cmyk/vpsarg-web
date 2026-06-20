@@ -324,7 +324,10 @@ nav a:hover{
 
     text-align:center;
 }
-
+.descargas{
+    scroll-margin-top:120px;
+    margin-bottom:40px;
+}
 .apps{
 
     display:flex;
@@ -860,4 +863,25 @@ body.light-mode .trust-bar div{
     color:#111827 !important;
     background:rgba(255,255,255,0.75);
     border:1px solid rgba(0,0,0,0.08);
+}
+.download-btn img{
+    width: 250px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    transition: 0.3s;
+}
+
+.download-btn img:hover{
+    transform: scale(1.08);
+}
+.card-descarga{
+    max-width: 650px;
+    margin: 40px auto;
+    padding: 40px;
+    border-radius: 20px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    backdrop-filter: blur(10px);
+    text-align: center;
 }
