@@ -258,11 +258,30 @@ document
         );
 
         const data = await respuesta.json();
+if (!data.ok) {
 
-        if (!data.ok) {
-            alert("Error al crear la preferencia de pago.");
-            return;
-        }
+    if (
+        data.error &&
+        data.error.includes("ya existe")
+    ) {
+
+        alert(
+            "Este usuario ya existe. Si ya tenés un servicio activo, utilizá la opción RENOVAR."
+        );
+
+    } else {
+
+        alert(
+            data.error ||
+            "Error al crear la preferencia de pago."
+        );
+
+    }
+
+    return;
+}
+
+window.location.href = data.init_point;
 
         window.location.href = data.init_point;
 
@@ -606,3 +625,42 @@ document.getElementById(
 function abrirModalRenovacion() {
     document.getElementById("modalRenovacion").style.display = "flex";
 }
+const themeToggle =
+document.getElementById("themeToggle");
+
+if (localStorage.getItem("theme") === "light") {
+
+    document.body.classList.add("light-mode");
+    themeToggle.innerHTML = "✦";
+
+
+}
+
+themeToggle.addEventListener("click", () => {
+
+    document.body.classList.toggle("light-mode");
+
+    if (
+        document.body.classList.contains("light-mode")
+    ) {
+
+        localStorage.setItem(
+            "theme",
+            "light"
+        );
+
+        themeToggle.innerHTML = "✦";
+
+
+    } else {
+
+        localStorage.setItem(
+            "theme",
+            "dark"
+        );
+
+        themeToggle.innerHTML = "(";
+
+    }
+
+});
