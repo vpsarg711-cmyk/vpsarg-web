@@ -1,406 +1,223 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VPS ARG - Internet Privado de Alta Velocidad</title>
 
-<title>VPS ARG</title>
-
-<link rel="stylesheet" href="css/style.css">
-
+    <!-- Agregamos Google Fonts para una tipografía moderna -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="css/style.css">
 </head>
-
 <body>
 
-<header class="header">
+    <header class="header">
+        <img src="IMG/logo.png" class="logo" alt="Logo VPS ARG">
+        <nav>
+            <a href="#planes">Planes</a>
+            <a href="#beneficios">Beneficios</a>
+            <a href="#contacto">Contacto</a>
+        </nav>
+        <!-- Accesibilidad: aria-label agregado -->
+        <button id="themeToggle" class="theme-toggle" aria-label="Cambiar tema claro/oscuro">
+            ✦
+        </button>
+    </header>
 
-    <img src="IMG/logo.png" class="logo">
+    <section class="hero-text">
+        <h1>Internet Privado de Alta Velocidad</h1>
+        <p>Conectados con vos, siempre.</p>
+    </section>
 
-    <nav>
-        <a href="#planes">Planes</a>
-        <a href="#beneficios">Beneficios</a>
-        <a href="#contacto">Contacto</a>
-    </nav>
-<button id="themeToggle" class="theme-toggle">
-    ✦
-</button>
+    <section class="hero">
+        <div class="banner-container">
+            <img src="IMG/banner.png" class="banner" alt="Neon promotional banner for VPS ARG">
+        </div>
+    </section>
 
-</header>
+    <section class="trust-bar">
+        <div>⚡ Activación Automática</div>
+        <div>🔒 Conexión Segura</div>
+        <div>📱 Android e iPhone</div>
+        <div>💬 Soporte por WhatsApp</div>
+    </section>
 
-<section class="hero-text">
+    <section class="descarga-app">
+        <div class="sobre-vpsarg">
+            <h3 class="tag-glow">✨ SOBRE VPS ARG</h3>
+            <h2>Conexión sin límites.</h2>
+            <p>VPS ARG nació en Latinoamérica para resolver un problema real: seguir conectado cuando el saldo se agota.</p>
+            <p>Hoy somos más de <strong>15.000 usuarios</strong> que nunca se quedan sin línea.</p>
+        </div>
 
-<h1>
-Internet Privado de Alta Velocidad
-</h1>
+        <div class="card-descarga">
+            <a href="#descargas" class="download-btn" aria-label="Ir a descargas">
+                <img src="IMG/descargar.png" alt="Descargar App VPS ARG">
+            </a>
+            <h2>📱 Descargá la App VPS ARG</h2>
+            <p>Instalala y conectate en segundos.</p>
+        </div>
+    </section>
 
-<p>
-Conectados con vos, siempre.
-</p>
+    <section id="planes" class="planes">
+        <h2>Nuestros Planes</h2>
+        <p class="subtitle">Elegí el plan que mejor se adapte a tus necesidades.</p>
+        
+        <div class="contenedor-planes">
+            <div class="plan">
+                <h3>SS</h3>
+                <p class="precio">$8.000<span>/mes</span></p>
+                <p class="descripcion">Ideal para navegación y streaming</p>
+                <ul class="features">
+                    <li>✔ Navegación rápida</li>
+                    <li>✔ Redes sociales</li>
+                    <li>✔ Streaming HD</li>
+                    <li>✔ Android, TV y PC</li>
+                </ul>
+                <button onclick="comprarSS()" class="btn-primary">Contratar</button>
+            </div>
 
-</section>
+            <div class="plan destacado">
+                <div class="badge">🔥 MÁS VENDIDO</div>
+                <h3 class="gamers">GAMERS</h3>
+                <p class="precio">$10.000<span>/mes</span></p>
+                <p class="descripcion">Máximo rendimiento para juegos online</p>
+                <ul class="features">
+                    <li>✔ Baja latencia</li>
+                    <li>✔ Juegos online</li>
+                    <li>✔ Streaming HD</li>
+                    <li>✔ Android, TV y PC</li>
+                </ul>
+                <button onclick="comprarGamers()" class="btn-primary btn-glow">Contratar</button>
+            </div>
 
-<section class="hero">
+            <div class="plan">
+                <h3>IPHONE</h3>
+                <p class="precio">$12.000<span>/mes</span></p>
+                <p class="descripcion">Configuración exclusiva para Apple</p>
+                <ul class="features">
+                    <li>✔ Configuración personalizada</li>
+                    <li>✔ Asistencia incluida</li>
+                    <li>✔ Compatible con iPhone</li>
+                    <li>✔ Activación rápida</li>
+                </ul>
+                <button onclick="comprarIphone()" class="btn-primary">Contratar</button>
+            </div>
+        </div>
+    </section>
 
-<img src="IMG/banner.png" class="banner" alt="Neon promotional banner for VPS ARG presenting VPN PREMIUM ARGENTINA. Large headline reads VPN PREMIUM ARGENTINA with smaller site branding VPS ARG and tagline Conectados con vos, siempre!. Three feature boxes read SS PREMIUM Navegación segura y estable; GAMERS PREMIUM Ping bajo y máxima performance; IPHONE PREMIUM Optimizado para dispositivos iOS. Above the feature boxes are three benefits: MÁS VELOCIDAD | MÁS SEGURIDAD | MÁS ESTABILIDAD. A bottom information row lists RENOVACIÓN AUTOMÁTICA Sin cortes de conexión; SOPORTE PERSONALIZADO Estamos para ayudarte; CONEXIÓN SEGURA Protegemos tu privacidad; ACTIVACIÓN INMEDIATA Tu VPN en segundos. Visual style is dark with bright blue and magenta neon borders, glowing particle streaks and rounded rectangles; overall tone is energetic, modern and high tech, conveying speed, security and reliability.">
-<section class="trust-bar">
+    <section class="renovar-section">
+        <a href="#" onclick="abrirModalRenovacion()" class="renovar-card">
+            <img src="IMG/renovar.png" class="renovar-logo" alt="Renovar Servicio">
+            <h2>Renovar Servicio</h2>
+            <p>Ingresá tu usuario y renová tu servicio en segundos.</p>
+        </a>
+    </section>
 
-<div>
-⚡ Activación Automática
-</div>
+    <section id="beneficios" class="beneficios">
+        <h2>¿Por qué elegir VPS ARG?</h2>
+        <div class="beneficios-grid">
+            <div class="beneficio">⚡ Activación automática</div>
+            <div class="beneficio">📱 Soporte por WhatsApp</div>
+            <div class="beneficio">💳 Pagos seguros con MercadoPago</div>
+            <div class="beneficio">🚀 Servidores de alto rendimiento</div>
+            <div class="beneficio">🤝 Atención personalizada</div>
+        </div>
+    </section>
 
-<div>
-🔒 Conexión Segura
-</div>
+    <section class="funciona">
+        <h2>¿Cómo funciona?</h2>
+        <div class="pasos">
+            <div class="paso"><span>1</span> Elegís un plan</div>
+            <div class="paso"><span>2</span> Pagás con MercadoPago</div>
+            <div class="paso"><span>3</span> Activación automática</div>
+            <div class="paso"><span>4</span> Comenzás a navegar</div>
+        </div>
+    </section>
 
-<div>
-📱 Android e iPhone
-</div>
+    <section id="descargas" class="descargas">
+        <h2>Descargar Aplicación</h2>
+        <div class="apps">
+            <div class="app-card">
+                <a href="https://play.google.com/store/apps/details?id=app.vpsarg" aria-label="Descargar para Android">
+                    <img src="IMG/android.png" class="app-logo" alt="Logo Android">
+                </a>
+                <h3>Android</h3>
+                <p>Descargá la aplicación oficial VPS ARG</p>
+                <a href="https://play.google.com/store/apps/details?id=app.vpsarg" class="btn-app">Descargar</a>
+            </div>
 
-<div>
-💬 Soporte por WhatsApp
-</div>
+            <div class="app-card">
+                <a href="https://apps.apple.com/us/app/npv-tunnel/id1629465476" aria-label="Descargar para iPhone">
+                    <img src="IMG/iphone.png" class="app-logo" alt="Logo iPhone">
+                </a>
+                <h3>iPhone</h3>
+                <p>Descargá NPV Tunnel para iOS</p>
+                <a href="https://apps.apple.com/us/app/npv-tunnel/id1629465476" class="btn-app">Descargar</a>
+            </div>
+        </div>
+    </section>
 
-</section>
+    <!-- ================= MODALES (Mantienen tus IDs para el JS) ================= -->
+    <div id="modalCompra" class="modal">
+        <div class="modal-content">
+            <span class="cerrar" onclick="cerrarModal()">&times;</span>
+            <h2>Completar datos</h2>
+            <p class="modal-subtitle">Estás a un paso de la mejor conexión.</p>
+            <form id="formCompra">
+                <div class="input-group">
+                    <input type="text" id="nombre" placeholder="Nombre completo" required>
+                </div>
+                <div class="input-group">
+                    <input type="text" id="whatsapp" placeholder="WhatsApp" required>
+                </div>
+                <div class="input-group">
+                    <input type="text" id="usuario" maxlength="8" autocomplete="off" placeholder="Usuario (6 a 8 caracteres)" required>
+                </div>
+                <div class="input-group">
+                    <input type="email" id="email" placeholder="Correo electrónico" required>
+                </div>
+                <div class="input-group">
+                    <select id="conexiones" required>
+                        <option value="1">1 conexión</option>
+                        <option value="2">2 conexiones</option>
+                        <option value="3">3 conexiones</option>
+                    </select>
+                </div>
+                <div class="precio-box">
+                    <p id="precioSeleccionado">Precio según plan seleccionado</p>
+                </div>
+                <button type="submit" class="btn-submit">Continuar al pago</button>
+            </form>
+        </div>
+    </div>
 
-<section class="descarga-app">
+    <div id="modalRenovacion" class="modal">
+        <div class="modal-content">
+            <span class="cerrar" onclick="cerrarRenovacion()">&times;</span>
+            <h2>Renovar Servicio</h2>
+            <p class="modal-subtitle">Renueva de forma rápida y segura.</p>
+            <form id="formRenovacion">
+                <div class="input-group d-flex">
+                    <input type="text" id="usuarioRenovar" minlength="6" maxlength="8" placeholder="Usuario Servex" required oninput="this.value = this.value.toLowerCase()">
+                    <button type="button" id="btnBuscarUsuario" class="btn-secondary">Verificar</button>
+                </div>
+                <div id="infoUsuario"></div>
+                <div class="input-group">
+                    <input type="email" id="emailRenovar" placeholder="Correo electrónico" required>
+                </div>
+                <button type="submit" class="btn-submit">Continuar al pago</button>
+            </form>
+        </div>
+    </div>
 
-<div class="sobre-vpsarg">
-
-<h3>✨ SOBRE VPS ARG</h3>
-
-<h2>Conexión sin límites.</h2>
-
-<p>
-VPS ARG nació en Latinoamérica para resolver un problema real:
-seguir conectado cuando el saldo se agota.
-</p>
-
-<p>
-Hoy somos más de 15.000 usuarios que nunca se quedan sin línea.
-</p>
-
-</div>
-
-<div class="card-descarga">
-
-  <a href="#descargas" class="download-btn">
-    <img src="img/descargar.png" alt="Descargar App">
-  </a>
-
-  <h2>📱 Descargá la App VPS ARG</h2>
-
-  <p>
-    Instalala y conectate en segundos.
-  </p>
-
-</div>
-
-</section>
-
-<section id="planes" class="planes">
-
-<h2>Nuestros Planes</h2>
-
-<div class="contenedor-planes">
-
-<div class="plan">
-
-<h3>SS</h3>
-
-<p class="precio">$8.000</p>
-
-<p class="descripcion">
-Ideal para navegación y streaming
-</p>
-
-<ul>
-<li>✔ Navegación rápida</li>
-<li>✔ Redes sociales</li>
-<li>✔ Streaming HD</li>
-<li>✔ Android, TV y PC</li>
-</ul>
-
-<button onclick="comprarSS()">
-Contratar
-</button>
-
-</div>
-
-<div class="plan destacado">
-
-<div class="badge">
-MÁS VENDIDO
-</div>
-
-<h3 class="gamers">GAMERS</h3>
-
-<p class="precio">$10.000</p>
-
-<p class="descripcion">
-Máximo rendimiento para juegos online
-</p>
-
-<ul>
-<li>✔ Baja latencia</li>
-<li>✔ Juegos online</li>
-<li>✔ Streaming HD</li>
-<li>✔ Android, TV y PC</li>
-</ul>
-
-<button onclick="comprarGamers()">
-Contratar
-</button>
-
-</div>
-
-<div class="plan">
-
-<h3>IPHONE</h3>
-
-<p class="precio">$12.000</p>
-
-<p class="descripcion">
-Configuración exclusiva para Apple
-</p>
-
-<ul>
-<li>✔ Configuración personalizada</li>
-<li>✔ Asistencia incluida</li>
-<li>✔ Compatible con iPhone</li>
-<li>✔ Activación rápida</li>
-</ul>
-
-<button onclick="comprarIphone()">
-Contratar
-</button>
-
-</div>
-
-</div>
-
-</section>
-<section class="renovar-section">
-
-    <a href="#" onclick="abrirModalRenovacion()" class="renovar-card">
-
-        <img src="IMG/renovar.png" class="renovar-logo">
-
-        <h2>Renovar Servicio</h2>
-
-        <p>
-            Ingresá tu usuario y renová tu servicio en segundos.
-        </p>
-
+    <a href="https://wa.me/5493435350260?text=Hola👋🏻%20quiero%20mas%20informacion%20sobre%20Internet%20Ilimitado!🚀" class="whatsapp-float" target="_blank" aria-label="Contactar por WhatsApp">
+        <img src="IMG/whatsapp.png" alt="WhatsApp">
     </a>
 
-</section>
-<section id="beneficios" class="beneficios">
-
-<h2>¿Por qué elegir VPS ARG?</h2>
-
-<div class="beneficios-grid">
-
-<div class="beneficio">
-⚡ Activación automática
-</div>
-
-<div class="beneficio">
-📱 Soporte por WhatsApp
-</div>
-
-<div class="beneficio">
-💳 Pagos seguros con MercadoPago
-</div>
-
-<div class="beneficio">
-🚀 Servidores de alto rendimiento
-</div>
-
-<div class="beneficio">
-🤝 Atención personalizada
-</div>
-
-</div>
-
-</section>
-<section class="funciona">
-
-<h2>¿Cómo funciona?</h2>
-
-<div class="pasos">
-
-<div class="paso">
-1️⃣ Elegís un plan
-</div>
-
-<div class="paso">
-2️⃣ Pagás con MercadoPago
-</div>
-
-<div class="paso">
-3️⃣ Activación automática
-</div>
-
-<div class="paso">
-4️⃣ Comenzás a navegar
-</div>
-
-</div>
-
-</section>
-
-<div id="modalCompra" class="modal">
-
-  <div class="modal-content">
-
-    <span class="cerrar" onclick="cerrarModal()">&times;</span>
-
-    <h2>Completar datos</h2>
-
-    <form id="formCompra">
-
-      <input
-        type="text"
-        id="nombre"
-        placeholder="Nombre completo"
-        required
-      >
-
-      <input
-        type="text"
-        id="whatsapp"
-        placeholder="WhatsApp"
-        required
-      >
-
-      <input
-    type="text"
-    id="usuario"
-    maxlength="8"
-    autocomplete="off"
-    placeholder="Usuario (6 a 8 caracteres)"
-    required
->
-
-      <input
-  type="email"
-  id="email"
-  placeholder="Correo electrónico"
-  required
->
-
-<select id="conexiones" required>
-
-  <option value="1">
-    1 conexión
-  </option>
-
-  <option value="2">
-    2 conexiones
-  </option>
-
-  <option value="3">
-    3 conexiones
-  </option>
-
-</select>
-
-<p id="precioSeleccionado">
-  Precio según plan seleccionado
-</p>
-
-<button type="submit">
-  Continuar al pago
-</button>
-
-    </form>
-
-  </div>
-
-</div>
-<section id="descargas"
- class="descargas">
-<h2>Descargar Aplicación</h2>
-
-<div class="apps">
-
-<div class="app-card">
-
-<a href="https://play.google.com/store/apps/details?id=app.vpsarg">
-<img src="IMG/android.png" class="app-logo">
-</a>
-
-<h3>Android</h3>
-<p>Descargá la aplicación oficial VPS ARG</p>
-
-</div>
-
-<div class="app-card">
-
-<a href="https://apps.apple.com/us/app/npv-tunnel/id1629465476">
-<img src="IMG/iphone.png" class="app-logo">
-</a>
-
-<h3>iPhone</h3>
-<p>Descargá NPV Tunnel para iOS</p>
-
-</div>
-</section>
-
-<div id="modalRenovacion" class="modal">
-
-<div class="modal-content">
-
-<span class="cerrar" onclick="cerrarRenovacion()">
-&times;
-</span>
-
-<h2>Renovar Servicio</h2>
-
-<form id="formRenovacion">
-
-<input
-type="text"
-id="usuarioRenovar"
-minlength="6"
-maxlength="8"
-placeholder="Usuario Servex"
-required
-oninput="this.value = this.value.toLowerCase()"
->
-
-<button id="btnBuscarUsuario">
-Verificar Usuario
-</button>
-
-<div id="infoUsuario"></div>
-
-<input
-type="email"
-id="emailRenovar"
-placeholder="Correo electrónico"
-required
->
-
-<button type="submit">
-Continuar al pago
-</button>
-
-</form>
-
-</div>
-
-</div>
-<script src="js/app.js"></script>
-<a
-href="https://wa.me/5493435350260?text=Hola👋🏻%20quiero%20mas%20informacion%20sobre%20Internet%20Ilimitado!🚀"
-class="whatsapp-float"
-target="_blank">
-
-<img src="IMG/whatsapp.png" alt="WhatsApp">
-
-</a>
+    <script src="js/app.js"></script>
 </body>
-
 </html>
