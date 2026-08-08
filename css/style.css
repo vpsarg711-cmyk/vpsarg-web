@@ -1061,3 +1061,330 @@ body.light-mode .modal-content select {
         padding: 30px 20px;
     }
 }
+
+/* ================= QUICK LINKS / ANCHOR NAV ================= */
+.main-nav {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.quick-links {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    max-width: 1100px;
+    margin: 0 auto 28px;
+    padding: 0 20px;
+}
+
+.quick-link {
+    text-decoration: none;
+    color: var(--text-main);
+    background: rgba(0, 212, 255, 0.08);
+    border: 1px solid rgba(0, 212, 255, 0.18);
+    padding: 10px 16px;
+    border-radius: 999px;
+    font-weight: 700;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.quick-link:hover {
+    color: var(--cyan);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 18px rgba(0, 212, 255, 0.08);
+}
+
+section[id] {
+    scroll-margin-top: 110px;
+}
+
+@media (max-width: 768px) {
+    .main-nav {
+        gap: 8px;
+    }
+
+    .quick-links {
+        gap: 8px;
+        margin-bottom: 18px;
+    }
+
+    .quick-link {
+        font-size: 13px;
+        padding: 9px 13px;
+    }
+}
+
+@media (max-width: 480px) {
+    .main-nav a {
+        width: 100%;
+        text-align: center;
+    }
+
+    .quick-link {
+        width: calc(50% - 6px);
+        text-align: center;
+    }
+}
+
+/* ================= FIX LAYOUT HORIZONTAL (NAV + SECCIONES) ================= */
+.main-nav {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding: 2px 6px 6px;
+}
+
+.main-nav::-webkit-scrollbar {
+    display: none;
+}
+
+.main-nav a {
+    flex: 0 0 auto;
+    white-space: nowrap;
+}
+
+.quick-links {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 12px;
+    width: min(1100px, 100%);
+    margin: 0 auto 28px;
+    padding: 0 20px;
+}
+
+.quick-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    min-height: 46px;
+}
+
+section[id] {
+    scroll-margin-top: 110px;
+}
+
+@media (max-width: 900px) {
+    .quick-links {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .contenedor-planes {
+        grid-template-columns: 1fr;
+    }
+
+    .plan {
+        max-width: 520px;
+        margin: 0 auto;
+    }
+
+    .destacado {
+        transform: none;
+    }
+
+    .destacado:hover {
+        transform: translateY(-10px);
+    }
+}
+
+@media (max-width: 768px) {
+    .header {
+        padding: 12px 14px;
+    }
+
+    .main-nav {
+        gap: 8px;
+        justify-content: flex-start;
+    }
+
+    .main-nav a {
+        font-size: 14px;
+        padding: 8px 14px;
+    }
+
+    .quick-links {
+        gap: 10px;
+        margin-bottom: 18px;
+        padding: 0 14px;
+    }
+
+    .quick-link {
+        font-size: 13px;
+        padding: 10px 12px;
+    }
+
+    .hero-text {
+        padding: 38px 16px 14px;
+    }
+
+    .hero-text h1 {
+        font-size: clamp(28px, 8vw, 42px);
+    }
+
+    .hero-text p {
+        font-size: 16px;
+    }
+
+    .planes {
+        padding: 56px 16px;
+    }
+
+    .planes h2 {
+        font-size: 32px;
+    }
+
+    .card-descarga, .renovar-card, .prueba-card {
+        padding: 26px 18px;
+    }
+
+    .modal-content {
+        width: min(94vw, 460px);
+        padding: 28px 18px;
+        margin: 18px auto;
+    }
+
+    .resultado-prueba {
+        padding: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo {
+        width: 112px;
+    }
+
+    .main-nav {
+        gap: 8px;
+        justify-content: flex-start;
+    }
+
+    .main-nav a {
+        font-size: 13px;
+        padding: 8px 12px;
+    }
+
+    .quick-links {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 8px;
+    }
+
+    .quick-link {
+        width: 100%;
+    }
+
+    .trust-bar div {
+        width: 100%;
+        text-align: center;
+    }
+
+    .download-btn img {
+        width: 170px;
+    }
+
+    .precio {
+        font-size: 40px;
+    }
+
+    .btn-primary, .btn-submit, .btn-secondary, .btn-copy, .btn-app-inline, .btn-whatsapp-inline {
+        font-size: 15px;
+    }
+
+    .prueba-badge {
+        font-size: 38px;
+    }
+
+    .prueba-card h2 {
+        font-size: 26px;
+    }
+}
+
+/* ================= FINAL OVERRIDES: HEADER OPALINO + NAV 4 EN LINEA ================= */
+.header {
+    background: linear-gradient(180deg, rgba(8, 8, 17, 0.42), rgba(8, 8, 17, 0.24));
+    backdrop-filter: blur(16px) saturate(120%);
+    -webkit-backdrop-filter: blur(16px) saturate(120%);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.main-nav {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 8px;
+    width: min(100%, 560px);
+    margin: 0 auto;
+    padding: 4px 0 8px;
+    align-items: center;
+}
+
+.main-nav a {
+    display: block;
+    width: 100% !important;
+    min-width: 0;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: clip;
+    padding: 8px 6px;
+    font-size: clamp(8px, 2.4vw, 14px);
+    font-weight: 700;
+    letter-spacing: -0.15px;
+}
+
+.quick-links,
+.quick-link {
+    display: none !important;
+}
+
+@media (max-width: 768px) {
+    .header {
+        padding: 12px 12px 10px;
+    }
+
+    .logo {
+        width: 104px;
+        margin-bottom: 10px;
+    }
+
+    .main-nav {
+        width: 100%;
+        max-width: 420px;
+        gap: 6px;
+    }
+
+    .main-nav a {
+        padding: 7px 4px;
+        font-size: clamp(8px, 2.6vw, 12px);
+    }
+}
+
+@media (max-width: 480px) {
+    .header {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .logo {
+        width: 96px;
+    }
+
+    .main-nav {
+        max-width: 100%;
+        gap: 4px;
+    }
+
+    .main-nav a {
+        padding: 7px 3px;
+        font-size: clamp(8px, 2.9vw, 11px);
+    }
+}
