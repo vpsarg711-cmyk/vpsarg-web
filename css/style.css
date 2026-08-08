@@ -391,6 +391,337 @@ nav a:hover {
     filter: drop-shadow(0 0 15px var(--purple));
 }
 
+
+/* ================= PRUEBA GRATIS ================= */
+.prueba-section {
+    padding: 0 20px 60px;
+    text-align: center;
+}
+
+.prueba-card {
+    max-width: 420px;
+    margin: 0 auto;
+    padding: 40px 30px;
+    border-radius: 24px;
+    background: linear-gradient(180deg, rgba(15, 23, 42, 0.95), rgba(0, 212, 255, 0.08));
+    border: 1px solid rgba(0, 212, 255, 0.25);
+    text-align: center;
+    text-decoration: none;
+    color: var(--text-main);
+    display: block;
+    transition: all 0.3s ease;
+    box-shadow: 0 15px 35px rgba(0, 212, 255, 0.08);
+}
+
+.prueba-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 45px rgba(0, 212, 255, 0.18);
+    border-color: var(--cyan);
+}
+
+.prueba-badge {
+    font-size: 44px;
+    margin-bottom: 15px;
+    display: inline-block;
+    filter: drop-shadow(0 0 12px var(--cyan));
+}
+
+.prueba-card h2 {
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+
+.prueba-card p {
+    color: var(--text-muted);
+    margin-bottom: 10px;
+    font-size: 17px;
+}
+
+.prueba-action {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 15px;
+    padding: 12px 18px;
+    border-radius: 999px;
+    background: rgba(0, 212, 255, 0.1);
+    color: var(--cyan);
+    font-weight: 700;
+    border: 1px solid rgba(0, 212, 255, 0.25);
+}
+
+.resultado-prueba {
+    display: none;
+    margin-top: 18px;
+    border-radius: 16px;
+    padding: 18px;
+    border: 1px solid var(--border-card);
+}
+
+.resultado-prueba.exito {
+    display: block;
+    background: rgba(34, 197, 94, 0.08);
+    border-color: rgba(34, 197, 94, 0.35);
+}
+
+.resultado-prueba.error {
+    display: block;
+    background: rgba(239, 68, 68, 0.08);
+    border-color: rgba(239, 68, 68, 0.35);
+}
+
+.resultado-prueba.info {
+    display: block;
+    background: rgba(0, 212, 255, 0.08);
+    border-color: rgba(0, 212, 255, 0.35);
+}
+
+.resultado-prueba h3 {
+    margin-bottom: 10px;
+    font-size: 22px;
+}
+
+.resultado-prueba p {
+    margin-bottom: 8px;
+    color: var(--text-main);
+}
+
+.credenciales-box {
+    display: grid;
+    gap: 10px;
+    text-align: left;
+    margin-top: 12px;
+}
+
+.credencial-item {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 12px 14px;
+    border-radius: 12px;
+    border: 1px solid var(--border-card);
+}
+
+.credencial-item strong {
+    display: block;
+    font-size: 12px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 4px;
+}
+
+.btn-copy {
+    margin-top: 14px;
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 12px;
+    background: var(--cyan);
+    color: #000;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-copy:hover {
+    background: #00b4d8;
+    transform: translateY(-2px);
+}
+
+body.light-mode .prueba-card {
+    background: linear-gradient(180deg, #ffffff, rgba(0, 212, 255, 0.06));
+}
+
+body.light-mode .credencial-item {
+    background: #f8fafc;
+}
+
+
+/* ================= RESULTADOS Y ACCIONES ================= */
+.resultado-prueba {
+    display: none;
+    margin-top: 18px;
+    border-radius: 16px;
+    padding: 18px;
+    border: 1px solid var(--border-card);
+    text-align: left;
+}
+
+.resultado-actions {
+    display: grid;
+    gap: 12px;
+    margin-top: 14px;
+}
+
+.btn-app-inline,
+.btn-whatsapp-inline {
+    display: block;
+    width: 100%;
+    padding: 14px 16px;
+    text-decoration: none;
+    text-align: center;
+    border-radius: 12px;
+    font-weight: 700;
+    transition: 0.3s;
+}
+
+.btn-app-inline {
+    background: linear-gradient(90deg, var(--cyan), var(--purple));
+    color: white;
+}
+
+.btn-app-inline:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(124, 58, 237, 0.35);
+}
+
+.btn-whatsapp-inline {
+    background: rgba(37, 211, 102, 0.14);
+    color: #22c55e;
+    border: 1px solid rgba(37, 211, 102, 0.35);
+}
+
+.btn-whatsapp-inline:hover {
+    transform: translateY(-2px);
+    background: rgba(37, 211, 102, 0.18);
+}
+
+/* Compactar credenciales para que el botón copie no quede tan abajo */
+.credenciales-box {
+    display: grid;
+    gap: 8px;
+    text-align: left;
+    margin-top: 10px;
+}
+
+.credencial-item {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 10px 12px;
+    border-radius: 12px;
+    border: 1px solid var(--border-card);
+}
+
+.btn-copy {
+    margin-top: 8px;
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 12px;
+    background: var(--cyan);
+    color: #000;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+/* Ajustes generales más responsivos */
+.prueba-card, .renovar-card, .card-descarga, .plan, .app-card, .modal-content {
+    width: 100%;
+}
+
+.modal-content {
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+@media (max-width: 900px) {
+    .contenedor-planes {
+        grid-template-columns: 1fr;
+    }
+
+    .plan {
+        max-width: 520px;
+        margin: 0 auto;
+    }
+
+    .destacado {
+        transform: none;
+    }
+
+    .destacado:hover {
+        transform: translateY(-10px);
+    }
+}
+
+@media (max-width: 768px) {
+    .header {
+        padding: 12px 14px;
+    }
+
+    nav {
+        gap: 10px;
+    }
+
+    nav a {
+        font-size: 14px;
+        padding: 8px 14px;
+    }
+
+    .hero-text {
+        padding: 38px 16px 14px;
+    }
+
+    .hero-text h1 {
+        font-size: clamp(28px, 8vw, 42px);
+    }
+
+    .hero-text p {
+        font-size: 16px;
+    }
+
+    .planes {
+        padding: 56px 16px;
+    }
+
+    .planes h2 {
+        font-size: 32px;
+    }
+
+    .card-descarga, .renovar-card, .prueba-card {
+        padding: 26px 18px;
+    }
+
+    .modal-content {
+        width: min(94vw, 460px);
+        padding: 28px 18px;
+        margin: 18px auto;
+    }
+
+    .resultado-prueba {
+        padding: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo {
+        width: 112px;
+    }
+
+    .trust-bar div {
+        width: 100%;
+        text-align: center;
+    }
+
+    .download-btn img {
+        width: 170px;
+    }
+
+    .precio {
+        font-size: 40px;
+    }
+
+    .btn-primary, .btn-submit, .btn-secondary, .btn-copy, .btn-app-inline, .btn-whatsapp-inline {
+        font-size: 15px;
+    }
+
+    .prueba-badge {
+        font-size: 38px;
+    }
+
+    .prueba-card h2 {
+        font-size: 26px;
+    }
+}
+
 /* ================= APPS ================= */
 .descargas {
     padding: 80px 20px;

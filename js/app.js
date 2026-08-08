@@ -1,5 +1,7 @@
 let usuarioVerificado = false;
 let planSeleccionado = null;
+const API_URL = "https://api.vpsarg.com.ar";
+
 
 function comprarSS() {
 
@@ -89,6 +91,13 @@ document.getElementById("whatsapp").addEventListener("input", function() {
 });
 
 
+document.getElementById("whatsappPrueba").addEventListener("input", function() {
+
+    this.value = this.value.replace(/\D/g, "");
+
+});
+
+
 function generarPassword() {
 
     const caracteres =
@@ -148,6 +157,157 @@ return 946;
 
 
 }
+
+function obtenerLinkApp(servicio) {
+    if (servicio === "iphone") {
+        return "https://apps.apple.com/us/app/npv-tunnel/id1629465476";
+    }
+    return "https://play.google.com/store/apps/details?id=app.vpsarg";
+}
+
+function obtenerWhatsappPrueba(servicio) {
+    const base = "https://wa.me/5493435350260";
+    if (servicio === "iphone") {
+        return `${base}?text=Hola%20quiero%20configurar%20mi%20iPhone%20con%20VPS%20ARG`;
+    }
+    return `${base}?text=Hola%20quiero%20mas%20informacion%20sobre%20Internet%20Ilimitado`;
+}
+
+function crearAccionesPrueba(servicio, mostrarWhatsApp = false) {
+    const textoApp = servicio === "iphone"
+        ? "Descargá NPV Tunnel y solicitá la configuración"
+        : "Descargá la app y conectate con las credenciales";
+
+    const linkApp = obtenerLinkApp(servicio);
+    const linkWhatsapp = obtenerWhatsappPrueba(servicio);
+
+    return `
+        <div class="resultado-actions">
+            <a href="${linkApp}" target="_blank" rel="noopener noreferrer" class="btn-app btn-app-inline">
+                ${textoApp}
+            </a>
+            ${mostrarWhatsApp ? `
+            <a href="${linkWhatsapp}" target="_blank" rel="noopener noreferrer" class="btn-whatsapp-inline">
+                Solicitar por WhatsApp
+            </a>` : ""}
+        </div>
+    `;
+}
+function abrirModalPrueba() {
+    const modal = document.getElementById("modalPrueba");
+    const form = document.getElementById("formPrueba");
+    const resultado = document.getElementById("resultadoPrueba");
+    const btn = document.getElementById("btnPrueba");
+
+    if (form) form.reset();
+
+    if (resultado) {
+        resultado.className = "resultado-prueba";
+        resultado.style.display = "none";
+        resultado.innerHTML = "";
+    }
+
+    if (btn) {
+        btn.disabled = false;
+        btn.textContent = "Solicitar prueba gratis";
+    }
+
+    if (modal) {
+        modal.style.display = "flex";
+    }
+}
+
+function cerrarModalPrueba() {
+    const modal = document.getElementById("modalPrueba");
+    const resultado = document.getElementById("resultadoPrueba");
+    const btn = document.getElementById("btnPrueba");
+
+    if (modal) modal.style.display = "none";
+
+    if (resultado) {
+        resultado.className = "resultado-prueba";
+        resultado.style.display = "none";
+        resultado.innerHTML = "";
+    }
+
+    if (btn) {
+        btn.disabled = false;
+        btn.textContent = "Solicitar prueba gratis";
+    }
+}
+
+function copiarCredencialesPrueba(usuario, password) {
+    const texto = `Usuario: ${usuario}\nContraseña: ${password}`;
+
+    if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(texto).then(() => {
+            alert("Credenciales copiadas");
+        }).catch(() => {
+            alert("No se pudieron copiar las credenciales.");
+        });
+        return;
+    }
+
+    const textarea = document.createElement("textarea");
+    textarea.value = texto;
+    textarea.style.position = "fixed";
+    textarea.style.opacity = "0";
+    document.body.appendChild(textarea);
+    textarea.focus();
+    textarea.select();
+
+    try {
+        document.execCommand("copy");
+        alert("Credenciales copiadas");
+    } catch (error) {
+        alert("No se pudieron copiar las credenciales.");
+    }
+
+    document.body.removeChild(textarea);
+}
+
+function mostrarResultadoPrueba(tipo, titulo, mensaje, usuario = "", password = "", vence = "", accionesHTML = "") {
+    const resultado = document.getElementById("resultadoPrueba");
+
+    if (!resultado) return;
+
+    const venceTexto = vence
+        ? new Date(vence).toLocaleString("es-AR", {
+            dateStyle: "short",
+            timeStyle: "short"
+        })
+        : "45 minutos";
+
+    const credenciales = usuario && password ? `
+        <div class="credenciales-box">
+            <div class="credencial-item">
+                <strong>Usuario</strong>
+                <span>${usuario}</span>
+            </div>
+            <div class="credencial-item">
+                <strong>Contraseña</strong>
+                <span>${password}</span>
+            </div>
+            <div class="credencial-item">
+                <strong>Vence</strong>
+                <span>${venceTexto}</span>
+            </div>
+            <button type="button" class="btn-copy" onclick="copiarCredencialesPrueba('${usuario}', '${password}')">
+                Copiar credenciales
+            </button>
+        </div>
+    ` : "";
+
+    resultado.className = `resultado-prueba ${tipo}`;
+    resultado.style.display = "block";
+    resultado.innerHTML = `
+        <h3>${titulo}</h3>
+        <p>${mensaje}</p>
+        ${credenciales}
+        ${accionesHTML}
+    `;
+}
+
 function actualizarPrecio() {
 
     const conexiones =
@@ -283,8 +443,6 @@ if (!data.ok) {
 
 window.location.href = data.init_point;
 
-        window.location.href = data.init_point;
-
     } catch (error) {
 
         console.error(error);
@@ -295,6 +453,99 @@ window.location.href = data.init_point;
 
     }
 
+});
+
+
+document.getElementById("formPrueba").addEventListener("submit", async function(e) {
+    e.preventDefault();
+
+    const nombre = document.getElementById("nombrePrueba").value.trim();
+    const whatsapp = document.getElementById("whatsappPrueba").value.trim();
+    const servicio = document.getElementById("servicioPrueba").value;
+    const btn = document.getElementById("btnPrueba");
+
+    if (nombre.length < 3) {
+        mostrarResultadoPrueba("error", "Nombre inválido", "Ingresá tu nombre completo.");
+        return;
+    }
+
+    if (whatsapp.length < 10) {
+        mostrarResultadoPrueba("error", "WhatsApp inválido", "Ingresá un número de WhatsApp válido.");
+        return;
+    }
+
+    if (servicio === "iphone") {
+        const accionesIphone = crearAccionesPrueba("iphone", true);
+        mostrarResultadoPrueba(
+            "info",
+            "iPhone",
+            "Descargá NPV Tunnel y solicitá la configuración por WhatsApp.",
+            "",
+            "",
+            "",
+            accionesIphone
+        );
+        return;
+    }
+
+    btn.disabled = true;
+    btn.textContent = "Creando prueba...";
+    mostrarResultadoPrueba("info", "Procesando", "Estamos creando tu prueba gratuita. No cierres esta ventana.");
+
+    try {
+        const respuesta = await fetch(`${API_URL}/crear-prueba`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                nombre,
+                whatsapp,
+                servicio
+            })
+        });
+
+        const data = await respuesta.json();
+
+        if (!respuesta.ok || !data.ok) {
+            mostrarResultadoPrueba(
+                "error",
+                "No se pudo crear la prueba",
+                data.error || "Ocurrió un error inesperado."
+            );
+            btn.disabled = false;
+            btn.textContent = "Solicitar prueba gratis";
+            return;
+        }
+
+        const usuario = data.usuario || data.cliente?.username || "";
+        const password = data.password || data.cliente?.password || "";
+        const vence = data.vence || data.cliente?.expiration_date || "";
+        const acciones = crearAccionesPrueba(servicio, false);
+
+        mostrarResultadoPrueba(
+            "exito",
+            "✅ Prueba creada correctamente",
+            "Guardá estas credenciales para entrar a tu servicio.",
+            usuario,
+            password,
+            vence,
+            acciones
+        );
+
+        btn.disabled = false;
+        btn.textContent = "Solicitar prueba gratis";
+
+    } catch (error) {
+        console.error(error);
+        mostrarResultadoPrueba(
+            "error",
+            "Error de conexión",
+            "No pudimos conectar con el servidor. Intentá nuevamente."
+        );
+        btn.disabled = false;
+        btn.textContent = "Solicitar prueba gratis";
+    }
 });
 
 function abrirRenovacion() {
@@ -663,4 +914,27 @@ themeToggle.addEventListener("click", () => {
 
     }
 
+});
+
+window.addEventListener("click", (event) => {
+    const modalCompra = document.getElementById("modalCompra");
+    const modalRenovacion = document.getElementById("modalRenovacion");
+    const modalPrueba = document.getElementById("modalPrueba");
+
+    if (event.target === modalCompra) {
+        cerrarModal();
+    }
+
+    if (event.target === modalRenovacion) {
+        cerrarRenovacion();
+    }
+
+    if (event.target === modalPrueba) {
+        cerrarModalPrueba();
+    }
+});
+window.addEventListener("load", () => {
+    if (window.location.hash === "#prueba-gratis") {
+        abrirModalPrueba();
+    }
 });

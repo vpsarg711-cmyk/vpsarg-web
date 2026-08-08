@@ -110,10 +110,19 @@
     </section>
 
     <section class="renovar-section">
-        <a href="#" onclick="abrirModalRenovacion()" class="renovar-card">
+        <a href="#" onclick="abrirModalRenovacion(); return false;" class="renovar-card">
             <img src="IMG/renovar.png" class="renovar-logo" alt="Renovar Servicio">
             <h2>Renovar Servicio</h2>
             <p>Ingresá tu usuario y renová tu servicio en segundos.</p>
+        </a>
+    </section>
+
+    <section class="prueba-section">
+        <a href="#" onclick="abrirModalPrueba(); return false;" class="prueba-card" aria-label="Solicitar prueba gratis">
+            <div class="prueba-badge">🎁</div>
+            <h2>Prueba Gratis</h2>
+            <p>Probá VPS ARG durante 45 minutos sin compromiso.</p>
+            <span class="prueba-action">Solicitar ahora</span>
         </a>
     </section>
 
@@ -211,6 +220,31 @@
                 </div>
                 <button type="submit" class="btn-submit">Continuar al pago</button>
             </form>
+        </div>
+    </div>
+
+    <div id="modalPrueba" class="modal">
+        <div class="modal-content">
+            <span class="cerrar" onclick="cerrarModalPrueba()">&times;</span>
+            <h2>Prueba Gratis</h2>
+            <p class="modal-subtitle">SS y Gamers: prueba gratis. iPhone: configuración por WhatsApp.</p>
+            <form id="formPrueba">
+                <div class="input-group">
+                    <input type="text" id="nombrePrueba" placeholder="Nombre completo" required>
+                </div>
+                <div class="input-group">
+                    <input type="text" id="whatsappPrueba" placeholder="WhatsApp" required>
+                </div>
+                <div class="input-group">
+                    <select id="servicioPrueba" required>
+                        <option value="ss">SS Premium</option>
+                        <option value="gamers">Gamers Premium</option>
+                        <option value="iphone">iPhone</option>
+                    </select>
+                </div>
+                <button type="submit" id="btnPrueba" class="btn-submit">Solicitar prueba gratis</button>
+            </form>
+            <div id="resultadoPrueba" class="resultado-prueba"></div>
         </div>
     </div>
 
