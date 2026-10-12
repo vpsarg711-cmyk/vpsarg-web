@@ -743,15 +743,17 @@ document
 
                 /*
                  * Solo es "no encontrado" cuando el servidor responde 200.
-                 * Un 409 es un problema de clasificación o precio del
-                 * servicio y un 500 es un error del servidor.
+                 * 409: el servicio existe pero no se puede clasificar o no
+                 * tiene precio (categoría no configurada, datos
+                 * contradictorios o incompletos). 502: Servex no respondió
+                 * bien. 500: error del servidor.
                  */
                 if (respuesta.status !== 200) {
 
                     document.getElementById(
                         "btnBuscarUsuario"
                     ).innerHTML =
-                        "✗ No se pudo verificar";
+                        "✗ Sin verificar";
 
                     document.getElementById(
                         "btnBuscarUsuario"
@@ -763,12 +765,17 @@ document
                     ).style.color =
                         "#fff";
 
+                    const mensaje = respuesta.status === 409
+                        ? "Encontramos tu usuario, pero no pudimos confirmar el plan automáticamente. Escribinos por WhatsApp y lo renovamos."
+                        : "No pudimos consultar tu servicio en este momento. Probá de nuevo en unos minutos o escribinos por WhatsApp.";
+
                     info.innerHTML = `
                         <div class="usuario-error">
-                            <p>
-                            No pudimos verificar tu servicio automáticamente.
-                            Escribinos por WhatsApp para renovarlo.
-                            </p>
+                            <p>${escaparHTML(mensaje)}</p>
+                            <a href="https://wa.me/5493435350260?text=${encodeURIComponent(`Hola, quiero renovar mi usuario ${usuario}`)}"
+                               target="_blank" rel="noopener noreferrer" class="btn-whatsapp-inline">
+                                Escribir por WhatsApp
+                            </a>
                         </div>
                     `;
 
