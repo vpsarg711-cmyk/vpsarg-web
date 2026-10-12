@@ -2,6 +2,15 @@ let usuarioVerificado = false;
 let planSeleccionado = null;
 const API_URL = "https://api.vpsarg.com.ar";
 
+function escaparHTML(valor) {
+    return String(valor ?? "")
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#39;");
+}
+
 
 function comprarSS() {
 
@@ -282,17 +291,17 @@ function mostrarResultadoPrueba(tipo, titulo, mensaje, usuario = "", password = 
         <div class="credenciales-box">
             <div class="credencial-item">
                 <strong>Usuario</strong>
-                <span>${usuario}</span>
+                <span>${escaparHTML(usuario)}</span>
             </div>
             <div class="credencial-item">
                 <strong>Contraseña</strong>
-                <span>${password}</span>
+                <span>${escaparHTML(password)}</span>
             </div>
             <div class="credencial-item">
                 <strong>Vence</strong>
                 <span>${venceTexto}</span>
             </div>
-            <button type="button" class="btn-copy" onclick="copiarCredencialesPrueba('${usuario}', '${password}')">
+            <button type="button" class="btn-copy" id="btnCopiarPrueba">
                 Copiar credenciales
             </button>
         </div>
@@ -301,11 +310,17 @@ function mostrarResultadoPrueba(tipo, titulo, mensaje, usuario = "", password = 
     resultado.className = `resultado-prueba ${tipo}`;
     resultado.style.display = "block";
     resultado.innerHTML = `
-        <h3>${titulo}</h3>
-        <p>${mensaje}</p>
+        <h3>${escaparHTML(titulo)}</h3>
+        <p>${escaparHTML(mensaje)}</p>
         ${credenciales}
         ${accionesHTML}
     `;
+
+    const btnCopiar = document.getElementById("btnCopiarPrueba");
+
+    if (btnCopiar) {
+        btnCopiar.addEventListener("click", () => copiarCredencialesPrueba(usuario, password));
+    }
 }
 
 function actualizarPrecio() {
@@ -620,17 +635,6 @@ if (!usuarioVerificado) {
             document.getElementById(
                 "usuarioRenovar"
             ).value.trim();
-        const usuarioInput = document.getElementById("usuario");
-
-if (usuarioInput) {
-    usuarioInput.addEventListener("input", function() {
-        if (this.value.length > 0) {
-            this.value =
-                this.value.charAt(0).toLowerCase() +
-                this.value.slice(1);
-        }
-    });
-}
 
         const email =
             document.getElementById(
@@ -661,6 +665,7 @@ if (usuarioInput) {
             if (!data.ok) {
 
                 alert(
+                    data.error ||
                     "No se pudo crear la renovación."
                 );
 
@@ -736,6 +741,41 @@ document
 
                 usuarioVerificado = false;
 
+                /*
+                 * Solo es "no encontrado" cuando el servidor responde 200.
+                 * Un 409 es un problema de clasificación o precio del
+                 * servicio y un 500 es un error del servidor.
+                 */
+                if (respuesta.status !== 200) {
+
+                    document.getElementById(
+                        "btnBuscarUsuario"
+                    ).innerHTML =
+                        "✗ No se pudo verificar";
+
+                    document.getElementById(
+                        "btnBuscarUsuario"
+                    ).style.background =
+                        "#dc2626";
+
+                    document.getElementById(
+                        "btnBuscarUsuario"
+                    ).style.color =
+                        "#fff";
+
+                    info.innerHTML = `
+                        <div class="usuario-error">
+                            <p>
+                            No pudimos verificar tu servicio automáticamente.
+                            Escribinos por WhatsApp para renovarlo.
+                            </p>
+                        </div>
+                    `;
+
+                    return;
+
+                }
+
                 document.getElementById(
                     "btnBuscarUsuario"
                 ).innerHTML =
@@ -801,9 +841,15 @@ ${diasRestantes < 0 ? '❌ Usuario vencido' : '✅ Usuario verificado'}
                 <p>
                 Plan:
                 ${
-                data.observacion === "IPHONE"
+                data.tipo_servicio === "iphone"
                 ? "IPHONE PREMIUM"
-                : data.categoria.includes("Gamers")
+                : data.tipo_servicio === "gamers"
+                ? "GAMERS PREMIUM"
+                : data.tipo_servicio === "ss"
+                ? "SS PREMIUM"
+                : data.observacion === "IPHONE"
+                ? "IPHONE PREMIUM"
+                : String(data.categoria || "").includes("Gamers")
                 ? "GAMERS PREMIUM"
                 : "SS PREMIUM"
                 }
@@ -816,7 +862,7 @@ ${diasRestantes < 0 ? '❌ Usuario vencido' : '✅ Usuario verificado'}
 
                 <p>
                 Conexiones:
-                ${data.conexiones}
+                ${escaparHTML(data.conexiones)}
                 </p>
 
                 <p>
