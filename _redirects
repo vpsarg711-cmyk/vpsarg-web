@@ -1,0 +1,12 @@
+/inicio /index.html 200
+/planes /compras 301
+/compras /compras.html 200
+/servicios /servicios.html 200
+/renovaciones /renovaciones.html 200
+/pruebas /pruebas.html 200
+/revendedores /coins.html 200
+/coins /coins.html 200
+/descargas /descargas.html 200
+/soporte /soporte.html 200
+\n/academia /academia.html 200\n
+/curso-vpn /curso-vpn.html 200

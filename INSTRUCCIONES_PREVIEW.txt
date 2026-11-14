@@ -1,0 +1,28 @@
+VPS ARG — PUBLICAR UNA VERSION DE PRUEBA EN VERCEL
+
+1) Descomprimir todo el ZIP en una carpeta nueva de Windows.
+2) No mezclar estos archivos con otra copia del proyecto.
+3) Instalar Git for Windows si Windows no reconoce el comando git.
+4) Abrir la carpeta descomprimida en el Explorador.
+5) Hacer clic en la barra de direcciones, escribir powershell y pulsar Enter.
+6) Ejecutar:
+   Set-ExecutionPolicy -Scope Process Bypass
+   .\PUBLICAR_PREVIEW_WINDOWS.ps1
+7) Completar el inicio de sesión de GitHub si lo solicita.
+8) Esperar el enlace de despliegue Preview que Vercel genere para la rama preview-menu-fix.
+
+SEGURIDAD:
+- Esta publicacion crea/actualiza una rama de prueba llamada preview-menu-fix.
+- No hace merge a main ni cambia el dominio de produccion.
+- No contiene backend ni credenciales .env.
+- El JavaScript del frontend apunta actualmente a https://api.vpsarg.com.ar.
+  En el Preview, NO probar compras, renovaciones ni solicitudes de prueba reales:
+  esos formularios pueden llamar al backend productivo. Probar solo navegacion,
+  menu, estilos, enlaces informativos y recursos estaticos.
+- COINS se mantiene como pagina informativa/solicitud de informacion; no implica
+  que el backend de revendedores este operativo.
+
+IMPORTANTE:
+El script necesita que GitHub permita escribir en el repositorio
+vpsarg711-cmyk/vpsarg-web y que Vercel tenga ese repositorio conectado.
+Si Vercel no genera Preview automaticamente, revisar la integracion Git del proyecto.
