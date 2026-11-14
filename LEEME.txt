@@ -1,0 +1,50 @@
+VPS ARG 2.0 — ENTREGA AUDITADA PARA NETLIFY
+
+PÁGINAS
+Inicio, Servicios, Planes, Compras, Renovaciones, Prueba gratis,
+Revendedores · COINS, Descargas, Soporte y tres páginas de resultado de pago.
+
+MENÚ
+Usa HTML nativo <details>/<summary>. Abrir/cerrar no depende de JavaScript.
+Se incluye en todas las páginas principales.
+
+FORMULARIOS
+Compra: POST https://api.vpsarg.com.ar/crear-preferencia
+Renovación: POST /buscar-usuario y POST /crear-preferencia-renovacion
+Prueba: POST /crear-prueba
+Los formularios integrados se abren desde Planes, Compras, Renovaciones y Prueba gratis.
+Mercado Pago procesa el pago y vuelve a las páginas de resultado.
+
+COINS / REVENDEDORES
+Se incluye la sección informativa con packs confirmados, mínimo de compra y contacto.
+La compra/acreditación automática y el panel no se conectan porque no se ha confirmado
+un endpoint backend para COINS. No se simula una compra ni se acreditan monedas desde el navegador.
+
+PUBLICAR EN NETLIFY
+Descomprimir el ZIP y subir TODO el contenido de esta carpeta.
+index.html debe quedar directamente en la raíz publicada.
+
+IMPORTANTE
+No modifica backend ni producción. Los precios de los planes provienen del frontend
+recibido y deben validarse con el backend antes de ventas reales. La verificación
+de pagos y llamadas API requiere pruebas autorizadas contra el backend real.
+
+
+ACTUALIZACIÓN DE ÍCONOS
+- ss_premium.png -> SS Premium
+- gp.png -> GAMER Premium
+- Iphone_premium.png -> iPhone Premium
+- tv_plata.png -> NETV PLATA
+- tv_oro.png -> NETV ORO
+- app-vpsarg.png -> isotipo oficial VPS ARG para la aplicación Android
+- app-npv-tunnel.png -> imagen NPV Tunnel proporcionada para la descarga iOS
+SS Premium se muestra como compatible con Personal y Claro. No se agregó selector de operador.
+Los botones de descarga mantienen los enlaces oficiales de Google Play y App Store.
+
+
+VIDEOS DE VEXA INTEGRADOS
+- Inicio: presentación de VEXA y VPS ARG (YouTube Shorts ID T5QTw0DyOEE).
+- Servicios: tutorial de conexión SS Premium (YouTube Shorts ID aA0Qycf-PY4).
+Ambos se reproducen dentro de la página mediante iframe de YouTube en modo privacidad mejorada.
+Se agregó también el ícono de Renovaciones con la misma paleta azul/celeste/violeta.
+El video de conexión iPhone queda pendiente hasta recibir su enlace.
